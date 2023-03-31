@@ -9,3 +9,5 @@ Description: It really only contains some utilities and helper functions.
 License: GPL-3 + file LICENSE
 RoxygenNote: 7.2.3
 Encoding: UTF-8
+Imports:
+  units, stringi, ggplot2, gtable, grid
