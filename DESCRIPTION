@@ -1,14 +1,14 @@
 Package: poof
 Type: Package
-Title: Contains utilities and helper functions
+Title: Package of useful functions
 Version: 1.0
 Date: 2023-03-29
 Author: Petr Pavlik
 Maintainer: Petr Pavlik <petrpavlik.xyz@gmail.com>
-Description: It really only contains some utilities and helper functions.
+Description: It really only contains some utilities and helper functions, which I dont't want to search elsewhere. Some more helpful than others.
 License: GPL-3 + file LICENSE
 RoxygenNote: 7.2.3
 Encoding: UTF-8
-Imports: Rcpp (>= 1.0.10), units, stringi, ggplot2, gtable, grid
+Imports: Rcpp (>= 1.0.10)
 LinkingTo: Rcpp
 

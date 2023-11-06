@@ -10,6 +10,18 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// kge
+double kge(std::vector<double> x, std::vector<double> y);
+RcppExport SEXP _poof_kge(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(kge(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
 // hbv
 NumericVector hbv(NumericVector x);
 RcppExport SEXP _poof_hbv(SEXP xSEXP) {
@@ -34,10 +46,50 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// mm_d_m3_s
+std::vector<double> mm_d_m3_s(std::vector<double> mm, std::vector<double> area);
+RcppExport SEXP _poof_mm_d_m3_s(SEXP mmSEXP, SEXP areaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type mm(mmSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type area(areaSEXP);
+    rcpp_result_gen = Rcpp::wrap(mm_d_m3_s(mm, area));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mm_d_m3_d
+std::vector<double> mm_d_m3_d(std::vector<double> mm, std::vector<double> area);
+RcppExport SEXP _poof_mm_d_m3_d(SEXP mmSEXP, SEXP areaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type mm(mmSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type area(areaSEXP);
+    rcpp_result_gen = Rcpp::wrap(mm_d_m3_d(mm, area));
+    return rcpp_result_gen;
+END_RCPP
+}
+// m3_s_mm_d
+std::vector<double> m3_s_mm_d(std::vector<double> mm, std::vector<double> area);
+RcppExport SEXP _poof_m3_s_mm_d(SEXP mmSEXP, SEXP areaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type mm(mmSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type area(areaSEXP);
+    rcpp_result_gen = Rcpp::wrap(m3_s_mm_d(mm, area));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_poof_kge", (DL_FUNC) &_poof_kge, 2},
     {"_poof_hbv", (DL_FUNC) &_poof_hbv, 1},
     {"_poof_api", (DL_FUNC) &_poof_api, 3},
+    {"_poof_mm_d_m3_s", (DL_FUNC) &_poof_mm_d_m3_s, 2},
+    {"_poof_mm_d_m3_d", (DL_FUNC) &_poof_mm_d_m3_d, 2},
+    {"_poof_m3_s_mm_d", (DL_FUNC) &_poof_m3_s_mm_d, 2},
     {NULL, NULL, 0}
 };
 
