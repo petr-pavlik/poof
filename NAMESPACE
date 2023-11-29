@@ -1,3 +1,5 @@
 useDynLib(poof, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
 exportPattern("^[[:alpha:]]+")
+export("%out%")
+export(".d(")

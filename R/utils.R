@@ -6,6 +6,14 @@
 #' 
 `%out%` <- Negate("%in%")
 
+#' Pipe to data.table alias
+#' 
+#' @description Answers the question whether the LHS given set of objects is within the RHS.
+#' @example 
+#' 1:3 %out% 2:5
+#' 
+".d(" <- `[`
+
 #' colorbar triangular ends for colorbar
 #'
 #' @param ... 

@@ -10,20 +10,30 @@
 #' 
 #' @return KGE value
 #'
-kge <- function(x, y) {
-    .Call(`_poof_kge`, x, y)
+.KGE2011cpp <- function(x, y) {
+    .Call(`_poof_KGE2011cpp`, x, y)
+}
+
+#' Nash-Sutcliffe Efficiency
+#'
+#' @description Nash-Sutcliffe Efficiency wrapper function
+#'
+#' @param x numeric vector of observed values
+#' @param y numeric vector of simulated values
+#' 
+#' @return KGE value
+#'
+.NSEcpp <- function(x, y) {
+    .Call(`_poof_NSEcpp`, x, y)
 }
 
 hbv <- function(x) {
     .Call(`_poof_hbv`, x)
 }
 
-api <- function(P, k, t) {
-    .Call(`_poof_api`, P, k, t)
+p <- function(P, k, t) {
+    .Call(`_poof_p`, P, k, t)
 }
-
-#' [m3/d] to [mm] convert 
-NULL
 
 #' [mm] to [m3/s] convert 
 #'
@@ -45,7 +55,25 @@ mm_d_m3_d <- function(mm, area) {
     .Call(`_poof_mm_d_m3_d`, mm, area)
 }
 
+#' [m3/d] to [mm] convert 
+#'
+#' @param area in square kilometers
+#' @param mm milimeters
+#'
+#'
 m3_s_mm_d <- function(mm, area) {
     .Call(`_poof_m3_s_mm_d`, mm, area)
+}
+
+#' Antecedent Precipitation Index
+#'
+#' @description API
+#'
+#' @param precipitation A vector of precipitation estimates/measurements
+#' @param k Decay constant
+#' @param t Number of days to account for, usually 5/7/14
+#'
+api <- function(precipitation, k, t) {
+    .Call(`_poof_api`, precipitation, k, t)
 }
 

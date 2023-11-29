@@ -10,15 +10,27 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// kge
-double kge(std::vector<double> x, std::vector<double> y);
-RcppExport SEXP _poof_kge(SEXP xSEXP, SEXP ySEXP) {
+// KGE2011cpp
+double KGE2011cpp(std::vector<double> x, std::vector<double> y);
+RcppExport SEXP _poof_KGE2011cpp(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::vector<double> >::type x(xSEXP);
     Rcpp::traits::input_parameter< std::vector<double> >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(kge(x, y));
+    rcpp_result_gen = Rcpp::wrap(KGE2011cpp(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// NSEcpp
+double NSEcpp(std::vector<double> x, std::vector<double> y);
+RcppExport SEXP _poof_NSEcpp(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(NSEcpp(x, y));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -33,16 +45,16 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// api
-NumericVector api(NumericVector P, double k, int t);
-RcppExport SEXP _poof_api(SEXP PSEXP, SEXP kSEXP, SEXP tSEXP) {
+// p
+NumericVector p(NumericVector P, double k, int t);
+RcppExport SEXP _poof_p(SEXP PSEXP, SEXP kSEXP, SEXP tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type P(PSEXP);
     Rcpp::traits::input_parameter< double >::type k(kSEXP);
     Rcpp::traits::input_parameter< int >::type t(tSEXP);
-    rcpp_result_gen = Rcpp::wrap(api(P, k, t));
+    rcpp_result_gen = Rcpp::wrap(p(P, k, t));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -82,14 +94,29 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// api
+std::vector<double> api(std::vector<double> precipitation, double k, int t);
+RcppExport SEXP _poof_api(SEXP precipitationSEXP, SEXP kSEXP, SEXP tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type precipitation(precipitationSEXP);
+    Rcpp::traits::input_parameter< double >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type t(tSEXP);
+    rcpp_result_gen = Rcpp::wrap(api(precipitation, k, t));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_poof_kge", (DL_FUNC) &_poof_kge, 2},
+    {"_poof_KGE2011cpp", (DL_FUNC) &_poof_KGE2011cpp, 2},
+    {"_poof_NSEcpp", (DL_FUNC) &_poof_NSEcpp, 2},
     {"_poof_hbv", (DL_FUNC) &_poof_hbv, 1},
-    {"_poof_api", (DL_FUNC) &_poof_api, 3},
+    {"_poof_p", (DL_FUNC) &_poof_p, 3},
     {"_poof_mm_d_m3_s", (DL_FUNC) &_poof_mm_d_m3_s, 2},
     {"_poof_mm_d_m3_d", (DL_FUNC) &_poof_mm_d_m3_d, 2},
     {"_poof_m3_s_mm_d", (DL_FUNC) &_poof_m3_s_mm_d, 2},
+    {"_poof_api", (DL_FUNC) &_poof_api, 3},
     {NULL, NULL, 0}
 };
 

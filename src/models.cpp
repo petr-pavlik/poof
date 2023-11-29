@@ -20,7 +20,7 @@ NumericVector hbv(NumericVector x) {
  * Antecedent Precipitation Index
  */
 // [[Rcpp::export]]
-NumericVector api(NumericVector P, double k, int t) {
+NumericVector p(NumericVector P, double k, int t) {
   return P;
 }
 
