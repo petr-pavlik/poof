@@ -21,18 +21,25 @@
 #' @param x numeric vector of observed values
 #' @param y numeric vector of simulated values
 #' 
-#' @return KGE value
+#' @return NSE value
 #'
 .NSEcpp <- function(x, y) {
     .Call(`_poof_NSEcpp`, x, y)
 }
 
-hbv <- function(x) {
-    .Call(`_poof_hbv`, x)
-}
-
-p <- function(P, k, t) {
-    .Call(`_poof_p`, P, k, t)
+#' Liu Mean Efficiency
+#'
+#' @description Liu Mean Efficiency wrapper function. This criteria aims to \deqn{\text{LME} = 1 - \sqrt{(k_1 - 1)^2 + (\beta - 1)^2}}
+#' 
+#' 
+#'
+#' @param x numeric vector of observed values
+#' @param y numeric vector of simulated values
+#' 
+#' @return LME value
+#'
+.LMEcpp <- function(x, y) {
+    .Call(`_poof_LMEcpp`, x, y)
 }
 
 #' [mm] to [m3/s] convert 
@@ -63,17 +70,5 @@ mm_d_m3_d <- function(mm, area) {
 #'
 m3_s_mm_d <- function(mm, area) {
     .Call(`_poof_m3_s_mm_d`, mm, area)
-}
-
-#' Antecedent Precipitation Index
-#'
-#' @description API
-#'
-#' @param precipitation A vector of precipitation estimates/measurements
-#' @param k Decay constant
-#' @param t Number of days to account for, usually 5/7/14
-#'
-api <- function(precipitation, k, t) {
-    .Call(`_poof_api`, precipitation, k, t)
 }
 

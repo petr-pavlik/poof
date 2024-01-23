@@ -91,7 +91,7 @@ double KGE2011cpp(std::vector<double> x, std::vector<double> y) {
 //' @param x numeric vector of observed values
 //' @param y numeric vector of simulated values
 //' 
-//' @return KGE value
+//' @return NSE value
 //'
 // [[Rcpp::export(.NSEcpp)]]
 double NSEcpp(std::vector<double> x, std::vector<double> y) {
@@ -121,5 +121,58 @@ double NSEcpp(std::vector<double> x, std::vector<double> y) {
   return value;
   
 }
+
+
+/* -----------------------------------------------------------------------------
+ Liu Mean Efficiency Criteria
+ ----------------------------------------------------------------------------- */
+
+//' Liu Mean Efficiency
+//'
+//' @description Liu Mean Efficiency wrapper function. This criteria aims to \deqn{\text{LME} = 1 - \sqrt{(k_1 - 1)^2 + (\beta - 1)^2}}
+//' 
+//' 
+//'
+//' @param x numeric vector of observed values
+//' @param y numeric vector of simulated values
+//' 
+//' @return LME value
+//'
+// [[Rcpp::export(.LMEcpp)]]
+double LMEcpp(std::vector<double> x, std::vector<double> y) {
+  double value = R_NaN;
+  
+  int n = x.size();
+  
+  // Check if the sizes of x and y are equal
+  if (n != y.size()) {
+   Rcpp::stop("Input vectors must have the same length.");
+  }
+  
+  // Calculate mean of observed values
+  double mean_x = std::accumulate(x.begin(), x.end(), 0.0) / n;
+  
+  // Calculate NSE
+  double numerator = 0.0;
+  double denominator = 0.0;
+  
+  for (int i = 0; i < n; ++i) {
+   numerator += pow(x[i] - y[i], 2);
+   denominator += pow(x[i] - mean_x, 2);
+  }
+  
+  value = 1.0 - numerator / denominator;
+  
+  return value;
+ 
+}
+
+
+
+
+
+
+
+
 
 
